@@ -1,5 +1,19 @@
 ## Playwright Featured Deals Scraper (Maui)
 
+### First time
+
+```bash
+python -m venv .venv
+# Windows: .venv\Scripts\activate
+# macOS/Linux:
+source .venv/bin/activate
+pip install playwright pandas
+python -m playwright install
+
+# Go!
+python extract_maui_deals.py --headed
+```
+
 This project uses Playwright (Python, sync API) to scrape the "Featured Deals" section from Costco Travel's Maui Vacation Packages page and outputs a pretty console table plus JSON/CSV files.
 
 ### Setup
