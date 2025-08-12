@@ -1,0 +1,44 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.egg-info/
+*.egg
+*.eggs/
+dist/
+build/
+pip-wheel-metadata/
+.python-version
+.mypy_cache/
+.pytest_cache/
+.cache/
+.coverage
+htmlcov/
+.tox/
+
+# Virtual environments
+.venv/
+venv/
+ENV/
+.env
+.env.*
+.envrc
+
+# IDE/editor
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+
+# Playwright outputs
+playwright-report/
+test-results/
+playwright/.cache/
+.playwright/
+*.trace.zip
+trace.zip
+
+# Logs
+logs/
+*.log

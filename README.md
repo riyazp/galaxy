@@ -1,37 +1,71 @@
-## Welcome to GitHub Pages
+## Playwright Featured Deals Scraper (Maui)
 
-You can use the [editor on GitHub](https://github.com/riyazp/galaxy/edit/master/README.md) to maintain and preview the content for your website in Markdown files.
+### First time
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+```bash
+python -m venv .venv
+# Windows: .venv\Scripts\activate
+# macOS/Linux:
+source .venv/bin/activate
+pip install playwright pandas
+python -m playwright install
 
-### Markdown
-
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
-
-```markdown
-Syntax highlighted code block
-
-# Header 1
-## Header 2
-### Header 3
-
-- Bulleted
-- List
-
-1. Numbered
-2. List
-
-**Bold** and _Italic_ and `Code` text
-
-[Link](url) and ![Image](src)
+# Go!
+python extract_maui_deals.py --headed
 ```
 
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
+This project uses Playwright (Python, sync API) to scrape the "Featured Deals" section from Costco Travel's Maui Vacation Packages page and outputs a pretty console table plus JSON/CSV files.
 
-### Jekyll Themes
+### Setup
 
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/riyazp/galaxy/settings). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
+Create a virtual environment and install dependencies via Make:
 
-### Support or Contact
+```bash
+python -m venv .venv
+. .venv/bin/activate
+make setup
+```
 
-Having trouble with Pages? Check out our [documentation](https://help.github.com/categories/github-pages-basics/) or [contact support](https://github.com/contact) and we’ll help you sort it out.
+Alternatively, on Windows PowerShell:
+
+```powershell
+python -m venv .venv
+.venv\Scripts\Activate.ps1
+make setup
+```
+
+### Run (headed)
+
+```bash
+python extract_maui_deals.py --headed
+```
+
+### Custom URL
+
+```bash
+python extract_maui_deals.py --url "https://www.costcotravel.com/Vacation-Packages/Hawaii/Maui" --headed
+```
+
+You can also adjust timeouts in milliseconds:
+
+```bash
+python extract_maui_deals.py --timeout 45000 --headed
+```
+
+To pause after navigation and inspect selectors using the Playwright inspector (to refine if the site changes):
+
+```bash
+python extract_maui_deals.py --headed --debug-selectors
+```
+
+### Outputs
+
+- `featured_deals.csv`: CSV file in the project root
+- `featured_deals.json`: JSON file in the project root
+
+Open the CSV in your preferred spreadsheet application, or preview it directly in your editor. The JSON can be loaded by other tools or viewed in any JSON viewer.
+
+### Notes
+
+- The scraper prints a formatted table with columns: `#`, `Title`, `Price`, `Link`.
+- If the site structure changes, see selector notes inside `extract_maui_deals.py` near the Featured Deals section and card locators to adjust.
